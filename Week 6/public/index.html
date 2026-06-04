@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script>
+      async function signup() {
+        await axios.post("http://localhost:3000/signup", {
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        });
+        alert("Sign up successfully");
+      }
+
+      async function signin() {
+        const response = await axios.post("http://localhost:3000/signin", {
+          username: document.getElementById("username").value,
+          password: document.getElementById("password").value,
+        });
+        localStorage.setItem("token", response.data.token);
+      }
+
+      async function getMyInfo() {
+        const response = await axios.get("http://localhost:3000/me", {
+          headers: {
+            token: localStorage.getItem("token"),
+          },
+        });
+
+        document.getElementById("information").innerHTML =
+          "Username: " +
+          response.data.username +
+          "Password: " +
+          response.data.password;
+      }
+
+      function logout() {
+        localStorage.removeItem("token");
+      }
+
+      getMyInfo();
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <label for="username">Username</label>
+      <input type="text" id="username" />
+      <br />
+      <label for="password">Password</label>
+      <input type="password" id="password" />
+      <br />
+      <button onclick="signup()">Sign-up</button>
+      <button onclick="signin()">Sign-in</button>
+    </div>
+    <div>
+      User Information:
+      <div id="information"></div>
+    </div>
+    <div><button onclick="logout()">Log-out</button></div>
+  </body>
+</html>

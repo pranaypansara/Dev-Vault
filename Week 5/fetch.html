@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API</title>
+  </head>
+  <body>
+    <div id="posts">Linkedin</div>
+
+    <!-- fetch is a function that sends an http request to the server and gets a promise as a response-->
+    <script>
+      async function getRecentPost() {
+        const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+        const json = await res.json();
+        document.getElementById("posts").innerHTML = json.body;
+      }
+      getRecentPost();
+    </script>
+  </body>
+</html>

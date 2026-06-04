@@ -1,0 +1,14 @@
+body{
+    background-color: #0e0e0e;
+}
+
+.toplink{
+    color: gray;
+    text-decoration: none;
+}
+
+.toplink :hover{
+    color: white;
+    cursor: pointer;
+}
+

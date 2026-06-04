@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <!-- importing axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.6/axios.min.js"></script>
+</head>
+<body>
+    <!-- Axios is an external library which just makes to send a request syntactially easier -->
+     <div id="posts">Linkedin</div>
+
+     <script>
+        async function fetchPosts(){
+            const res = await axios.get("https://jsonplaceholder.typicode.com/posts/1");
+            // res.data converts res into json
+            document.getElementById("posts").innerHTML = res.data.body;
+        }
+        fetchPosts();
+     </script>
+</body>
+</html>
