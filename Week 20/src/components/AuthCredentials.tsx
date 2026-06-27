@@ -1,3 +1,6 @@
+import { Center } from "./center";
+import { Input } from "./input";
+
 export function AuthCredentials() {
   return (
     <div
@@ -9,11 +12,18 @@ export function AuthCredentials() {
         flexDirection: "column",
       }}
     >
-      <h1>Login to Trello</h1>
-      <div>Connect to treelo with:</div>
-      <input type="text" placeholder="Email" />
-
-      <input type="text" placeholder="Password" />
+      <Center>
+        <h1>Login to Trello</h1>
+      </Center>
+      <Center>
+        <div>Connect to trello with:</div>
+      </Center>
+      <Center>
+        <Input type="text" placeholder="Email" />
+      </Center>
+      <Center>
+        <Input type="text" placeholder="Password" />
+      </Center>
     </div>
   );
 }
