@@ -1,5 +1,6 @@
 import { Center } from "./center";
 import { Input } from "./input";
+import { Button } from "./button";
 
 export function AuthCredentials() {
   return (
@@ -19,10 +20,25 @@ export function AuthCredentials() {
         <div>Connect to trello with:</div>
       </Center>
       <Center>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <Button>google</Button>
+            <Button>facebook</Button>
+          </div>
+          <div style={{ display: "flex", flexDirection: "row" }}>
+            <Button>google</Button>
+            <Button>facebook</Button>
+          </div>
+        </div>
+      </Center>
+      <Center>
         <Input type="text" placeholder="Email" />
       </Center>
       <Center>
         <Input type="text" placeholder="Password" />
+      </Center>
+      <Center>
+        <Button>sign in</Button>
       </Center>
     </div>
   );

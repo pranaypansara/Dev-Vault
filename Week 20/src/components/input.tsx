@@ -3,7 +3,7 @@ export function Input(props) {
     <input
       type={props.type}
       placeholder={props.placeholder}
-      style={{ padding: 10, borderRadius: 10, margin: 10 }}
+      style={{ minWidth: 400, padding: 10, borderRadius: 10, margin: 10 }}
     />
   );
 }

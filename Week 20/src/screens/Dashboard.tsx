@@ -1,3 +1,3 @@
 export function Dashboard() {
-  return <div>Dashboard component</div>;
+  return <div style={{ display: "flex" }}></div>;
 }
