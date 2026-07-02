@@ -1,47 +1,87 @@
+import { useState } from "react";
 import { Appbar } from "@/components/appbar";
 import { Card } from "@/components/card";
+import { BoardSection } from "@/components/boardSection";
 
 export function Board() {
+  const [pendingTasks, setPendingTasks] = useState([
+    {
+      id: 1,
+      title: "Node to Bun migration",
+      description: "this is a random ass description which ain't used for shit",
+    },
+  ]);
+  const [onGoingTasks, setOnGoingTasks] = useState([
+    {
+      id: 2,
+      title: "Node to Bun migration",
+      description: "this is a random ass description which ain't used for shit",
+    },
+  ]);
+  const [doneTasks, setDoneTasks] = useState([
+    {
+      id: 3,
+      title: "Node to Bun migration",
+      description: "this is a random ass description which ain't used for shit",
+    },
+  ]);
+
   return (
     <div>
       <Appbar />
 
       <div style={{ display: "flex" }}>
-        <div
-          style={{
-            flex: 1,
-            borderRight: "1px dotted black",
-            minHeight: "100vh",
+        <BoardSection
+          onDrop={(item) => {
+            console.log(item);
+            setPendingTasks((p) => p.filter((x) => x.id === item.id));
+            setOnGoingTasks((p) => p.filter((x) => x.id === item.id));
+            setDoneTasks((p) => p.filter((x) => x.id === item.id));
+            setPendingTasks((p) => [...p, item]);
           }}
         >
-          <Card
-            title={"Node to Bun migration"}
-            description={
-              "this is a random ass description which ain't used for shit"
-            }
-          ></Card>
-          <Card
-            title={"Node to Bun migration"}
-            description={
-              "this is a random ass description which ain't used for shit"
-            }
-          ></Card>
-        </div>
-        <div
-          style={{
-            flex: 1,
-            borderRight: "1px dotted black",
-            minHeight: "100vh",
+          {pendingTasks.map((task) => (
+            <Card
+              title={task.title}
+              description={task.description}
+              id={task.id}
+            />
+          ))}
+        </BoardSection>
+        <BoardSection
+          onDrop={(item) => {
+            console.log(item);
+            setPendingTasks((p) => p.filter((x) => x.id !== item.id));
+            setOnGoingTasks((p) => p.filter((x) => x.id !== item.id));
+            setDoneTasks((p) => p.filter((x) => x.id !== item.id));
+            setOnGoingTasks((p) => [...p, item]);
           }}
         >
-          <Card
-            title={"Node to Bun migration"}
-            description={
-              "this is a random ass description which ain't used for shit"
-            }
-          ></Card>
-        </div>
-        <div style={{ flex: 1, minHeight: "100vh" }}>Hi there</div>
+          {onGoingTasks.map((task) => (
+            <Card
+              title={task.title}
+              description={task.description}
+              id={task.id}
+            />
+          ))}
+        </BoardSection>
+        <BoardSection
+          onDrop={(item) => {
+            console.log(item);
+            setPendingTasks((p) => p.filter((x) => x.id === item.id));
+            setOnGoingTasks((p) => p.filter((x) => x.id === item.id));
+            setDoneTasks((p) => p.filter((x) => x.id === item.id));
+            setDoneTasks((p) => [...p, item]);
+          }}
+        >
+          {pendingTasks.map((task) => (
+            <Card
+              title={task.title}
+              description={task.description}
+              id={task.id}
+            />
+          ))}
+        </BoardSection>
       </div>
     </div>
   );
