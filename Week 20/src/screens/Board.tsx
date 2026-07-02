@@ -34,9 +34,9 @@ export function Board() {
         <BoardSection
           onDrop={(item) => {
             console.log(item);
-            setPendingTasks((p) => p.filter((x) => x.id === item.id));
-            setOnGoingTasks((p) => p.filter((x) => x.id === item.id));
-            setDoneTasks((p) => p.filter((x) => x.id === item.id));
+            setPendingTasks((p) => p.filter((x) => x.id !== item.id));
+            setOnGoingTasks((p) => p.filter((x) => x.id !== item.id));
+            setDoneTasks((p) => p.filter((x) => x.id !== item.id));
             setPendingTasks((p) => [...p, item]);
           }}
         >
@@ -68,9 +68,9 @@ export function Board() {
         <BoardSection
           onDrop={(item) => {
             console.log(item);
-            setPendingTasks((p) => p.filter((x) => x.id === item.id));
-            setOnGoingTasks((p) => p.filter((x) => x.id === item.id));
-            setDoneTasks((p) => p.filter((x) => x.id === item.id));
+            setPendingTasks((p) => p.filter((x) => x.id !== item.id));
+            setOnGoingTasks((p) => p.filter((x) => x.id !== item.id));
+            setDoneTasks((p) => p.filter((x) => x.id !== item.id));
             setDoneTasks((p) => [...p, item]);
           }}
         >
