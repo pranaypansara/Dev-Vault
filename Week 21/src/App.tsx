@@ -1,4 +1,8 @@
 //using global variable for setInterval is ugly, using useState hook for it causes extra re-renders, useRef is the solution. its lets us create reference to a value without causing re-renders
+
+//useRef creates reference for variables that does not trigger re-render when changed. these variables holds the current value and does not re-initialise
+
+//see the scroll bottom example in slides to understand ref in divs
 import { useState } from "react";
 import { useRef } from "react";
 
