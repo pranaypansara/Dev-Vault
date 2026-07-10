@@ -12,17 +12,7 @@ export function useTodos() {
     axios.get("https://jsonplaceholder.typicode.com/todos/").then((res) => {
       setTodos(res.data);
     });
-
-    let interval = setInterval(() => {
-      axios.get("https://jsonplaceholder.typicode.com/todos/").then((res) => {
-        setTodos(res.data);
-      });
-    }, 10 * 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
-  return todos;
+  return { todos, setTodos };
 }
