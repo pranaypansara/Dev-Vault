@@ -11,7 +11,7 @@ export function App() {
     <setTodosContext.Provider value={{ setTodos }}>
       <div>
         {todos.map((todo) => (
-          <Todo title={todo.title} id={todo.id} setTodos={setTodos} />
+          <Todo title={todo.title} id={todo.id} />
         ))}
       </div>
     </setTodosContext.Provider>
